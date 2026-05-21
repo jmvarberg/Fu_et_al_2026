@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+scripts/run_nfcore_rnaseq.sbatch
+scripts/get_fastqs.sh
+data/
+results/Quickomics/cond/
+results/Quickomics/rpl/

@@ -83,14 +83,6 @@ A03_LRT_model_check <- function(counts_matrix, column_data, full_model = "~ sex 
   res_no  <- results(dds_without, contrast = c("rpl","RPL","Control"))
   res_yes <- results(dds_with, contrast = c("rpl","RPL","Control"))
   
-  #cor(res_no$log2FoldChange, res_yes$log2FoldChange, use = "pairwise.complete.obs")
-  # qplot(res_no$log2FoldChange, res_yes$log2FoldChange) + 
-  #   geom_point() +
-  #   ggpubr::stat_cor() +
-  #   xlab("log2FC - design: ~ rpl") +
-  #   ylab("log2FC - design: ~ sex + rpl") +
-  #   theme_bw() 
-  
   table(no = res_no$padj < 0.05, yes = res_yes$padj < 0.05)
 
   

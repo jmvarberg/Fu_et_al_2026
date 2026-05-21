@@ -2,7 +2,22 @@ This repository contains the code used to process the bulk RNAseq data for Fu et
 
 # Primary Analysis - nf-core/rnaseq
 
-The nextflow nf-core/rnaseq pipeline was used to analyze the raw sequencing files, and to generate genes x samples counts matrix using STAR and RSEM. The nextflow submission script is located at __scripts/run_nfcore_rnaseq.sbatch__.
+The nextflow nf-core/rnaseq pipeline was used to analyze the raw sequencing files, and to generate genes x samples counts matrix using STAR and RSEM, as outlined below.
+'''
+{bash}
+nextflow run <path_to_pipelines>/nfcore_rnaseq/3_19_0/main.nf
+        -profile apptainer \
+	--outdir ./results/nfcore_rnaseq/nfcore_output  \
+        -w ./results/nfcore_rnaseq/nfcore_work \
+        -c <path_to_configs>/configs/rcc_rnaseq.config \
+        --input ./data/trophoblast_sample_sheet.csv \
+        --gtf <path_to_reference>/GRCh38.114/Homo_sapiens.GRCh38.114.gtf.gz \
+        --fasta <path_to_references>/GRCh38.114/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz \
+        --aligner star_rsem \
+	--rsem_index <path_to_reference>/GRCh38.114/STAR_RSEM_index/rsem/ \
+	--salmon_index <path_to_references>/GRCh38.114/STAR_RSEM_index/salmon/ \
+	-resume
+    '''
 
 # Downstream Analysis - DESeq2
 
